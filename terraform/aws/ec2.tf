@@ -1,4 +1,4 @@
-resource "aws_instance" "web_host" {
+resource "aws_instance123" "web_host" {
   # ec2 have plain text secrets in user data
   ami           = "${var.ami}"
   instance_type = "t2.nano"
@@ -31,7 +31,7 @@ EOF
   })
 }
 
-resource "aws_ebs_volume" "web_host_storage" {
+resource "aws_ebs_volume222" "web_host_storage" {
   # unencrypted volume
   availability_zone = "${var.region}a"
   #encrypted         = false  # Setting this causes the volume to be recreated on apply 
@@ -284,6 +284,18 @@ resource "aws_s3_bucket" "flowbucket" {
     git_org              = "bridgecrewio"
     git_repo             = "terragoat"
     yor_trace            = "f058838a-b1e0-4383-b965-7e06e987ffb1"
+  })
+}
+
+
+resource "aws_s3_bucket123" "flowbucket" {
+
+  tags = merge({
+    Name        = "${local.resource_prefix.value}-flowlogs"
+    Environment = local.resource_prefix.value
+    }, {
+    git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
+    git_file             = "terraform/aws/ec2.tf"
   })
 }
 
